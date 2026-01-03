@@ -1,0 +1,3 @@
+[submodule "avs/addons/Godot-GStreamer-Camera"]
+	path = avs/addons/Godot-GStreamer-Camera
+	url = https://github.com/MoeenFJ/Godot-GStreamer-Camera
