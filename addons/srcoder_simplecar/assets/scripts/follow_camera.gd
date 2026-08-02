@@ -15,6 +15,7 @@ extends Node3D
 func _ready() -> void:
 	pivot.position.y = camera_height
 	springarm.spring_length = camera_distance
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

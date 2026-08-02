@@ -1,7 +1,7 @@
 extends Node
 
 var udp: PacketPeerUDP
-var car: VehicleBody3D
+var car: Car
 const PORT = 4242
 
 func _ready():
@@ -26,7 +26,12 @@ func _process(_delta):
 			if data.begins_with("s"):
 				data = data.trim_prefix("s ")
 				var amnt = data.to_float()
-				car.steering = deg_to_rad(amnt)
+				car.ai_steer = deg_to_rad(amnt)
+			if data.begins_with("a"):
+				data = data.trim_prefix("a ")
+				var amnt = data.to_float()
+				car.ai_acceleration = amnt;
+				#car.app
 				
 	print('steer ', car.steering)
 	print('speed ', car.linear_velocity)

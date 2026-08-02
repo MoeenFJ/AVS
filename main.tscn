@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://jlagamfbep4e"]
+
+[ext_resource type="Texture2D" uid="uid://4qcccw6hpchb" path="res://textures/citrus_orchard_road_puresky_4k.exr" id="1_5vw27"]
+[ext_resource type="Material" uid="uid://uuufxhwf3vvn" path="res://textures/CityStreetAsphaltGenericClean001/asphalt.tres" id="2_kek77"]
+[ext_resource type="Material" uid="uid://ckafuflhy2p0a" path="res://textures/terrain2/terrain2.tres" id="3_4c57u"]
+[ext_resource type="PackedScene" uid="uid://7l1irinimxa" path="res://addons/srcoder_simplecar/car.tscn" id="4_efxa6"]
+[ext_resource type="Script" uid="uid://dfhw124sdyubt" path="res://car_fifo_interface.gd" id="5_dg77c"]
+[ext_resource type="PackedScene" uid="uid://rjx8tx5y7j2p" path="res://addons/srcoder_simplecar/follow_camera.tscn" id="6_ycdy4"]
+[ext_resource type="Script" uid="uid://37h3myptacxe" path="res://addons/road_system/road_system.gd" id="7_w48qg"]
+[ext_resource type="Script" uid="uid://behy7l2p8thuy" path="res://addons/road_system/road_node.gd" id="8_vivmo"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iypd"]
+panorama = ExtResource("1_5vw27")
+
+[sub_resource type="Sky" id="Sky_jsk3o"]
+sky_material = SubResource("PanoramaSkyMaterial_6iypd")
+
+[sub_resource type="Environment" id="Environment_4arys"]
+background_mode = 2
+sky = SubResource("Sky_jsk3o")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.1
+tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_density = 0.2013
+fog_aerial_perspective = 0.519
+fog_sky_affect = 0.309
+
+[sub_resource type="Environment" id="Environment_6iypd"]
+
+[node name="Node3D" type="Node3D" unique_id=95666114]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=831435825]
+environment = SubResource("Environment_4arys")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=676434055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.897005, 0.06492448, -2.0582252)
+material_override = ExtResource("2_kek77")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1870266983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.11661, -0.9999428, 100.07928)
+material_override = ExtResource("3_4c57u")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1501826114]
+transform = Transform3D(0.765351, 0.64150673, -0.052028812, 0.41869247, -0.43486288, 0.79723966, 0.4888091, -0.6319521, -0.6014169, -7.449085, 92.55322, -4.7859006)
+shadow_enabled = true
+
+[node name="car" parent="." unique_id=1297653401 instance=ExtResource("4_efxa6")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -2.2773123, -0.42954534, 0.91926825)
+max_torque = 150.0
+steer_damping = 1.0
+front_wheel_grip = 1.0
+rear_wheel_grip = 1.0
+
+[node name="ColorFrontCam" type="GStreamerCamera" parent="car" unique_id=883185654]
+devicePath = "/tmp/BumperCam"
+frameSize = Vector2i(320, 320)
+transform = Transform3D(-1.0000004, -2.0785281e-08, 8.216476e-08, 2.0785302e-08, 0.8797096, 0.4755119, -8.2164746e-08, 0.4755118, -0.87970954, 0.0065090656, 1.9732102, 0.675519)
+fov = 88.0
+
+[node name="LineOnlyFrontCam" type="GStreamerCamera" parent="car" unique_id=600457546]
+devicePath = "/tmp/LineCam"
+frameSize = Vector2i(320, 320)
+transform = Transform3D(-1.0000004, -2.0785281e-08, 8.216476e-08, 2.0785302e-08, 0.8797096, 0.4755119, -8.2164746e-08, 0.4755118, -0.87970954, 0.0065090656, 1.9732102, 0.675519)
+cull_mask = 1048568
+environment = SubResource("Environment_6iypd")
+fov = 88.0
+
+[node name="CarSerialInterface" type="Node" parent="car" unique_id=724694128]
+script = ExtResource("5_dg77c")
+
+[node name="FollowCamera" parent="." unique_id=678235567 node_paths=PackedStringArray("follow_target") instance=ExtResource("6_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6193714, 0.07152271, 1.7209978)
+follow_target = NodePath("../car")
+
+[node name="Road System" type="Node3D" parent="." unique_id=1589709321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 6.823)
+top_level = true
+script = ExtResource("7_w48qg")
+tolerance_degrees = 0.0
+uv_scale = Vector2(1, 1)
+road_material = ExtResource("2_kek77")
+
+[node name="Road Node2" type="Node3D" parent="Road System" unique_id=3084246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0160446, 0, -5.7920876)
+script = ExtResource("8_vivmo")
+handle_out = Vector3(2, 0, 0)
+handle_in = Vector3(-2, 0, 0)
+
+[node name="Road Node3" type="Node3D" parent="Road System" unique_id=1682820068]
+transform = Transform3D(0.9099268, 0, -0.4147689, 0, 1, 0, 0.4147689, 0, 0.9099268, 34.447735, -1.9073486e-06, -3.9021454)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node4" type="Node3D" parent="Road System" unique_id=1001477317]
+transform = Transform3D(0.31669706, 0, -0.9485266, 0, 1, 0, 0.9485266, 0, 0.31669706, 53.586967, 0, 18.42659)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node" type="Node3D" parent="Road System" unique_id=484832581]
+transform = Transform3D(-0.44336975, 0, -0.8963388, 0, 1, 0, 0.8963388, 0, -0.44336975, 53.170094, 0, 51.21827)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node5" type="Node3D" parent="Road System" unique_id=238415031]
+transform = Transform3D(-0.9872119, 0, -0.1594134, 0, 1, 0, 0.1594134, 0, -0.9872119, 25.223516, 0, 72.49754)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node6" type="Node3D" parent="Road System" unique_id=465876941]
+transform = Transform3D(-0.99983674, 0, 0.018071964, 0, 1, 0, -0.018071964, 0, -0.99983674, -20.413713, 0, 73.51737)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node7" type="Node3D" parent="Road System" unique_id=2060753533]
+transform = Transform3D(-0.7175628, 0, 0.69649416, 0, 1, 0, -0.69649416, 0, -0.7175628, -58.349266, 0, 68.76108)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node8" type="Node3D" parent="Road System" unique_id=1135833834]
+transform = Transform3D(-0.7239569, 0, 0.6898456, 0, 1, 0, -0.6898456, 0, -0.7239569, -80.487045, 0, 41.691605)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node9" type="Node3D" parent="Road System" unique_id=648156616]
+transform = Transform3D(-0.9766417, 0, 0.21487498, 0, 1, 0, -0.21487498, 0, -0.9766417, -107.254295, 0, 23.41519)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node10" type="Node3D" parent="Road System" unique_id=427772577]
+transform = Transform3D(-0.25181326, 0, 0.96777594, 0, 1, 0, -0.96777594, 0, -0.25181326, -121.78225, 0, 10.603468)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node11" type="Node3D" parent="Road System" unique_id=1583720318]
+transform = Transform3D(0.9950157, 0, -0.099720225, 0, 1, 0, 0.099720225, 0, 0.9950157, -105.323425, 0, -3.3222523)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node12" type="Node3D" parent="Road System" unique_id=514532914]
+transform = Transform3D(0.9950157, 0, -0.099720225, 0, 1, 0, 0.099720225, 0, 0.9950157, -6.2940254, 3.8146973e-06, -5.6048136)
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)

@@ -1,3 +1,4 @@
+class_name Car
 extends VehicleBody3D
 
 @export_category("Car Settings")
@@ -24,6 +25,10 @@ var player_braking : float = 0.0
 var player_steer : float = 0.0
 var player_input : Vector2 = Vector2.ZERO
 
+var ai_acceleration : float = 0.0
+var ai_steer : float = 0.0
+var ai_control : bool = false
+
 #an exporetd array of driving wheels so we can limit rom of each wheel when we process input
 @onready var driving_wheels : Array[VehicleWheel3D] = [$WheelBackLeft,$WheelBackRight]
 @onready var steering_wheels : Array[VehicleWheel3D] = [$WheelFrontLeft,$WheelFrontRight]
@@ -41,17 +46,27 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	get_input(delta)
 	#now process steering and braking
-	steering = player_steer
+	if ai_control:
+		steering = ai_steer
+	else:
+		steering = player_steer
 	brake = player_braking
 	#cos we want to limit rpm- control each driving wheel individually
 	for wheel in driving_wheels:
 		#linearly reduce engine force based on the wheels current rpm and the player input
-		var actual_force : float = player_acceleration * ((-max_torque/max_wheel_rpm) * abs(wheel.get_rpm()) + max_torque) 
+		var actual_force : float = 0
+		if ai_control:		
+			actual_force = ai_acceleration * ((-max_torque/max_wheel_rpm) * abs(wheel.get_rpm()) + max_torque) 
+		else:
+			actual_force = player_acceleration * ((-max_torque/max_wheel_rpm) * abs(wheel.get_rpm()) + max_torque) 
 		wheel.engine_force = actual_force
 
 
 ## sets the variables player_steer, player_brake and player_acceleration based on the player input
 func get_input(delta : float):
+	
+	if Input.is_key_pressed(KEY_T):
+		ai_control = !ai_control
 	#steer first
 	player_input.x = Input.get_axis("right","left")
 	player_steer = move_toward(player_steer, player_input.x * max_steer,steer_damping * delta)
