@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ckafuflhy2p0a"]
+
+[ext_resource type="Texture2D" uid="uid://563672pwl835" path="res://textures/terrain2/rocky_terrain_02_diff_4k.jpg" id="1_moy8m"]
+[ext_resource type="Texture2D" uid="uid://beme7bsq6qt6j" path="res://textures/terrain1/aerial_rocks_04_disp_4k.png" id="2_vkokb"]
+
+[resource]
+albedo_texture = ExtResource("1_moy8m")
+heightmap_texture = ExtResource("2_vkokb")
+uv1_scale = Vector3(150, 150, 150)
