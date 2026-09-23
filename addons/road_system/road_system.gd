@@ -11,16 +11,18 @@ extends Node3D
 @export var uv_scale: Vector2 = Vector2(1.0, 0.2)
 @export var road_material: Material
 
+
 @export_group("Lanes & Markings")
 @export var lanes: int = 2:
 	set(value):
 		lanes = max(1, value)
 		request_update()
-
+@export var lane_line_material : Material
 @export var line_width: float = 0.15 # Width of the solid white lines in meters
-@export var line_color_surface: Color = Color.WHITE
+
 
 var road_mesh_instance: MeshInstance3D
+var lines_mask_mesh_instance: MeshInstance3D
 var lines_mesh_instance: MeshInstance3D
 
 var curve: Curve3D = Curve3D.new()
@@ -66,7 +68,16 @@ func _setup_mesh() -> void:
 		road_mesh_instance.name = "RoadMesh"
 		add_child(road_mesh_instance)
 
-	road_mesh_instance.layers = 3 # Assigned to Layer 1 (Standard World)
+	road_mesh_instance.layers = 1 # Assigned to Layer 1 (Standard World)
+
+		
+	lines_mask_mesh_instance = get_node_or_null("RoadLinesMaskMesh") as MeshInstance3D
+	if not lines_mask_mesh_instance:
+		lines_mask_mesh_instance = MeshInstance3D.new()
+		lines_mask_mesh_instance.name = "RoadLinesMaskMesh"
+		add_child(lines_mask_mesh_instance)
+
+	lines_mask_mesh_instance.layers = 4
 
 	# 3. Separate Road Lines Surface (Renders on Layers 1 and 2)
 	lines_mesh_instance = get_node_or_null("RoadLinesMesh") as MeshInstance3D
@@ -77,7 +88,9 @@ func _setup_mesh() -> void:
 
 	# Layer value '3' enables both Layer 1 and Layer 2 (1 + 2 = 3)
 	# This lets your Main Camera and your Line Camera both see the lines!
-	lines_mesh_instance.layers = 7
+	lines_mesh_instance.layers = 1
+	
+
 
 func request_update() -> void:
 	rebuild_curve()
@@ -152,18 +165,20 @@ func draw_lines() -> void:
 		immediate_mesh.surface_end()
 		
 func generate_road_mesh() -> void:
-	if not road_mesh_instance or not lines_mesh_instance:
+	if not road_mesh_instance or not lines_mesh_instance or not lines_mask_mesh_instance:
 		return
 
 	if curve.get_point_count() < 2:
 		road_mesh_instance.mesh = null
 		lines_mesh_instance.mesh = null
+		lines_mask_mesh_instance.mesh = null
 		return
 
 	var points: PackedVector3Array = curve.tessellate(tessellation_stages, tolerance_degrees)
 	if points.size() < 2:
 		road_mesh_instance.mesh = null
 		lines_mesh_instance.mesh = null
+		lines_mask_mesh_instance.mesh = null
 		return
 
 	var half_width = road_width * 0.5
@@ -254,12 +269,12 @@ func generate_road_mesh() -> void:
 			var r_vert = line_center + (right * half_line)
 
 			st_lines.set_normal(Vector3.UP)
-			st_lines.set_color(line_color_surface)
+			#st_lines.set_color(line_color_surface)
 			st_lines.set_uv(Vector2(0.0, line_v_dist))
 			st_lines.add_vertex(l_vert)
 
 			st_lines.set_normal(Vector3.UP)
-			st_lines.set_color(line_color_surface)
+			#st_lines.set_color(line_color_surface)
 			st_lines.set_uv(Vector2(1.0, line_v_dist))
 			st_lines.add_vertex(r_vert)
 
@@ -281,14 +296,19 @@ func generate_road_mesh() -> void:
 			st_lines.add_index(next_idx + 1)
 
 	st_lines.generate_tangents()
+	lines_mask_mesh_instance.mesh = st_lines.commit()
 	lines_mesh_instance.mesh = st_lines.commit()
 
-	# Completely Unshaded Material (Pure color, no lighting/shadows)
-	var line_mat = StandardMaterial3D.new()
-	line_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	line_mat.vertex_color_use_as_albedo = true
-	line_mat.albedo_color = line_color_surface
-	lines_mesh_instance.material_override = line_mat
+
+	lines_mesh_instance.material_override = lane_line_material
+	
+	
+	
+	var line_mask_mat = StandardMaterial3D.new()
+	line_mask_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	line_mask_mat.vertex_color_use_as_albedo = true
+	line_mask_mat.albedo_color = Color.WHITE
+	lines_mask_mesh_instance.material_override = line_mask_mat
 # Helper function for tangent calculation
 func _get_forward_dir(points: PackedVector3Array, index: int) -> Vector3:
 	if index < points.size() - 1:

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://rjx8tx5y7j2p" path="res://addons/srcoder_simplecar/follow_camera.tscn" id="6_ycdy4"]
 [ext_resource type="Script" uid="uid://37h3myptacxe" path="res://addons/road_system/road_system.gd" id="7_w48qg"]
 [ext_resource type="Script" uid="uid://behy7l2p8thuy" path="res://addons/road_system/road_node.gd" id="8_vivmo"]
+[ext_resource type="Script" uid="uid://b66i74eq7ss68" path="res://randomizer.gd" id="9_kek77"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iypd"]
 panorama = ExtResource("1_5vw27")
@@ -27,19 +28,118 @@ fog_density = 0.2013
 fog_aerial_perspective = 0.519
 fog_sky_affect = 0.309
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sayo3"]
+
 [sub_resource type="Environment" id="Environment_6iypd"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
 
 [node name="Node3D" type="Node3D" unique_id=95666114]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=831435825]
 environment = SubResource("Environment_4arys")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2121173091]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -23, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=641107271]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -22, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=64217314]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -21, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=754156569]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -20, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=135489108]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -19, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=927513228]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -18, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=740524454]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -17, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=1605079892]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -16, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="." unique_id=300356535]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -15, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="." unique_id=707942706]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -14, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="." unique_id=421024954]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -13, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="." unique_id=170484468]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -12, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="." unique_id=366456151]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -12, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=975238891]
+transform = Transform3D(0.1, 0, 0, 0, 0.31173134, 0, 0, 0, 50.004486, -24, -0.0865376, 0.50799996)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="." unique_id=233794360]
+transform = Transform3D(0.1, 0, 0, 0, 0.312, 0, 0, 0, 1.7069057, -26.76663, -0.0865376, 1.3418472)
+material_override = SubResource("StandardMaterial3D_sayo3")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=676434055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.897005, 0.06492448, -2.0582252)
-material_override = ExtResource("2_kek77")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.7993182, -4.286995, 0.6418302, 2.4711907)
+layers = 3
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="." unique_id=1726052824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5578032, 22.288666, 0.6418283, 3.2936318)
+layers = 3
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="." unique_id=50973934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, -12.707943, 0.64182925, 76.537834)
+layers = 3
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="." unique_id=700280189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, -28.830103, 0.64182925, 78.25044)
+layers = 3
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="." unique_id=768801199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, -41.471237, 0.64182925, 77.90369)
+layers = 3
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="." unique_id=497260796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, 20.019508, 0.64182925, 77.53938)
+layers = 3
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="." unique_id=1275857166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, 7.558441, 0.64182925, 82.13031)
+layers = 3
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="." unique_id=1920439306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5525045, -5.0119553, 0.64182925, 78.304535)
+layers = 3
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="." unique_id=684292045]
+transform = Transform3D(0.27621046, 0, -3.4143019, 0, 1, 0, 0.9610972, 0, 0.9812389, -86.606674, 0.64182925, -15.583183)
+layers = 3
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1870266983]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.11661, -0.9999428, 100.07928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.117, -0.5, 100.079)
 material_override = ExtResource("3_4c57u")
 use_collision = true
 size = Vector3(1000, 1, 1000)
@@ -49,98 +149,166 @@ transform = Transform3D(0.765351, 0.64150673, -0.052028812, 0.41869247, -0.43486
 shadow_enabled = true
 
 [node name="car" parent="." unique_id=1297653401 instance=ExtResource("4_efxa6")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -2.2773123, -0.42954534, 0.91926825)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.014273, 0, 1.3448231)
 max_torque = 150.0
 steer_damping = 1.0
-front_wheel_grip = 1.0
-rear_wheel_grip = 1.0
 
 [node name="ColorFrontCam" type="GStreamerCamera" parent="car" unique_id=883185654]
 devicePath = "/tmp/BumperCam"
-frameSize = Vector2i(320, 320)
-transform = Transform3D(-1.0000004, -2.0785281e-08, 8.216476e-08, 2.0785302e-08, 0.8797096, 0.4755119, -8.2164746e-08, 0.4755118, -0.87970954, 0.0065090656, 1.9732102, 0.675519)
-fov = 88.0
+frameSize = Vector2i(640, 480)
+transform = Transform3D(-1, -2.9900345e-08, 8.215053e-08, 0, 0.9396925, 0.3420201, -8.742278e-08, 0.3420201, -0.9396925, 0.007, 1.388, 1.176)
+keep_aspect = 0
+cull_mask = 1
+current = true
+fov = 85.0
+size = 7.32
 
 [node name="LineOnlyFrontCam" type="GStreamerCamera" parent="car" unique_id=600457546]
 devicePath = "/tmp/LineCam"
-frameSize = Vector2i(320, 320)
-transform = Transform3D(-1.0000004, -2.0785281e-08, 8.216476e-08, 2.0785302e-08, 0.8797096, 0.4755119, -8.2164746e-08, 0.4755118, -0.87970954, 0.0065090656, 1.9732102, 0.675519)
-cull_mask = 1048568
+frameSize = Vector2i(640, 480)
+transform = Transform3D(-1, -4.1570544e-08, 7.690664e-08, 0, 0.8797094, 0.4755116, -8.742278e-08, 0.4755116, -0.8797094, 0.006508708, 1.9732103, 0.6755209)
+cull_mask = 4
 environment = SubResource("Environment_6iypd")
-fov = 88.0
+fov = 98.0
 
-[node name="CarSerialInterface" type="Node" parent="car" unique_id=724694128]
+[node name="ObsOnlyFrontCam" type="GStreamerCamera" parent="car" unique_id=919276877]
+devicePath = "/tmp/ObsCam"
+frameSize = Vector2i(640, 480)
+transform = Transform3D(-1, -2.9900345e-08, 8.215053e-08, 0, 0.9396925, 0.3420201, -8.742278e-08, 0.3420201, -0.9396925, 0.007, 1.388, 1.176)
+keep_aspect = 0
+cull_mask = 2
+environment = SubResource("Environment_6iypd")
+fov = 85.0
+
+[node name="CarSerialInterface" type="Node" parent="car" unique_id=724694128 node_paths=PackedStringArray("cam")]
 script = ExtResource("5_dg77c")
+cam = NodePath("../ColorFrontCam")
 
 [node name="FollowCamera" parent="." unique_id=678235567 node_paths=PackedStringArray("follow_target") instance=ExtResource("6_ycdy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6193714, 0.07152271, 1.7209978)
 follow_target = NodePath("../car")
 
 [node name="Road System" type="Node3D" parent="." unique_id=1589709321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 6.823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.823)
 top_level = true
 script = ExtResource("7_w48qg")
 tolerance_degrees = 0.0
 uv_scale = Vector2(1, 1)
 road_material = ExtResource("2_kek77")
+lane_line_material = SubResource("StandardMaterial3D_5vw27")
+line_width = 0.25
 
 [node name="Road Node2" type="Node3D" parent="Road System" unique_id=3084246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0160446, 0, -5.7920876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.06, 0.01, -6.297)
 script = ExtResource("8_vivmo")
 handle_out = Vector3(2, 0, 0)
 handle_in = Vector3(-2, 0, 0)
 
 [node name="Road Node3" type="Node3D" parent="Road System" unique_id=1682820068]
-transform = Transform3D(0.9099268, 0, -0.4147689, 0, 1, 0, 0.4147689, 0, 0.9099268, 34.447735, -1.9073486e-06, -3.9021454)
+transform = Transform3D(0.9099268, 0, -0.4147689, 0, 1, 0, 0.4147689, 0, 0.9099268, 34.448, 0.01, -3.902)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node4" type="Node3D" parent="Road System" unique_id=1001477317]
-transform = Transform3D(0.31669706, 0, -0.9485266, 0, 1, 0, 0.9485266, 0, 0.31669706, 53.586967, 0, 18.42659)
+transform = Transform3D(0.31669706, 0, -0.9485266, 0, 1, 0, 0.9485266, 0, 0.31669706, 53.587, 0.01, 18.427)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node" type="Node3D" parent="Road System" unique_id=484832581]
-transform = Transform3D(-0.44336975, 0, -0.8963388, 0, 1, 0, 0.8963388, 0, -0.44336975, 53.170094, 0, 51.21827)
+transform = Transform3D(-0.44336975, 0, -0.8963388, 0, 1, 0, 0.8963388, 0, -0.44336975, 53.17, 0.01, 51.218)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node5" type="Node3D" parent="Road System" unique_id=238415031]
-transform = Transform3D(-0.9872119, 0, -0.1594134, 0, 1, 0, 0.1594134, 0, -0.9872119, 25.223516, 0, 72.49754)
+transform = Transform3D(-0.9872119, 0, -0.1594134, 0, 1, 0, 0.1594134, 0, -0.9872119, 25.224, 0.01, 72.498)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node6" type="Node3D" parent="Road System" unique_id=465876941]
-transform = Transform3D(-0.99983674, 0, 0.018071964, 0, 1, 0, -0.018071964, 0, -0.99983674, -20.413713, 0, 73.51737)
+transform = Transform3D(-0.99983674, 0, 0.018071964, 0, 1, 0, -0.018071964, 0, -0.99983674, -20.414, 0.01, 73.517)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node7" type="Node3D" parent="Road System" unique_id=2060753533]
-transform = Transform3D(-0.7175628, 0, 0.69649416, 0, 1, 0, -0.69649416, 0, -0.7175628, -58.349266, 0, 68.76108)
+transform = Transform3D(-0.7175628, 0, 0.69649416, 0, 1, 0, -0.69649416, 0, -0.7175628, -58.349, 0.01, 68.761)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node8" type="Node3D" parent="Road System" unique_id=1135833834]
-transform = Transform3D(-0.7239569, 0, 0.6898456, 0, 1, 0, -0.6898456, 0, -0.7239569, -80.487045, 0, 41.691605)
+transform = Transform3D(-0.7239569, 0, 0.6898456, 0, 1, 0, -0.6898456, 0, -0.7239569, -80.487, 0.01, 41.692)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node9" type="Node3D" parent="Road System" unique_id=648156616]
-transform = Transform3D(-0.9766417, 0, 0.21487498, 0, 1, 0, -0.21487498, 0, -0.9766417, -107.254295, 0, 23.41519)
+transform = Transform3D(-0.9766417, 0, 0.21487498, 0, 1, 0, -0.21487498, 0, -0.9766417, -107.254, 0.01, 23.415)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node10" type="Node3D" parent="Road System" unique_id=427772577]
-transform = Transform3D(-0.25181326, 0, 0.96777594, 0, 1, 0, -0.96777594, 0, -0.25181326, -121.78225, 0, 10.603468)
+transform = Transform3D(-0.032630175, 0, 0.9994676, 0, 1, 0, -0.9994676, 0, -0.032630175, -121.782, 0.01, 10.602999)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node11" type="Node3D" parent="Road System" unique_id=1583720318]
-transform = Transform3D(0.9950157, 0, -0.099720225, 0, 1, 0, 0.099720225, 0, 0.9950157, -105.323425, 0, -3.3222523)
+transform = Transform3D(0.9950157, 0, -0.099720225, 0, 1, 0, 0.099720225, 0, 0.9950157, -105.323, 0.01, -3.322)
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
 
 [node name="Road Node12" type="Node3D" parent="Road System" unique_id=514532914]
-transform = Transform3D(0.9950157, 0, -0.099720225, 0, 1, 0, 0.099720225, 0, 0.9950157, -6.2940254, 3.8146973e-06, -5.6048136)
+transform = Transform3D(0.030079544, 0, 0.9995476, 0, 1, 0, -0.9995476, 0, 0.030079544, -88.262, 0.01, -10.909)
+top_level = true
 script = ExtResource("8_vivmo")
 handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node13" type="Node3D" parent="Road System" unique_id=624749720]
+transform = Transform3D(-0.74561524, 0, 0.6663768, 0, 1, 0, -0.6663768, 0, -0.74561524, -98.418, 0.01, -27.689)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node14" type="Node3D" parent="Road System" unique_id=1930674904]
+transform = Transform3D(-0.94815266, 0, 0.31781557, 0, 1, 0, -0.31781557, 0, -0.94815266, -119.92663, 0.01, -33.600765)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node15" type="Node3D" parent="Road System" unique_id=1798558523]
+transform = Transform3D(-0.38074112, 0, 0.92468166, 0, 1, 0, -0.92468166, 0, -0.38074112, -144.49, 0.01, -53.684)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node16" type="Node3D" parent="Road System" unique_id=2096318401]
+transform = Transform3D(0.6110047, 0, 0.7916271, 0, 1, 0, -0.7916271, 0, 0.6110047, -132.9537, 0.01, -102.64257)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node17" type="Node3D" parent="Road System" unique_id=801042174]
+transform = Transform3D(0.6778563, 0, -0.7351943, 0, 1, 0, 0.7351943, 0, 0.6778563, -81.78388, 0.01, -104.38972)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node18" type="Node3D" parent="Road System" unique_id=1441519036]
+transform = Transform3D(0.52994967, 0, -0.848029, 0, 1, 0, 0.848029, 0, 0.52994967, -57.89, 0.01, -31.888)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node19" type="Node3D" parent="Road System" unique_id=553561734]
+transform = Transform3D(0.992961, 0, 0.118440896, 0, 1, 0, -0.118440896, 0, 0.992961, -34.679, 0.01, 1.086)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Road Node20" type="Node3D" parent="Road System" unique_id=312497922]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -20.025, 0.01, 0.525)
+top_level = true
+script = ExtResource("8_vivmo")
+handle_in = Vector3(-8, 0, 0)
+
+[node name="Randomizer" type="Node3D" parent="." unique_id=1676241642 node_paths=PackedStringArray("cam", "rs")]
+script = ExtResource("9_kek77")
+cam = NodePath("../car/LineOnlyFrontCam")
+rs = NodePath("../Road System")

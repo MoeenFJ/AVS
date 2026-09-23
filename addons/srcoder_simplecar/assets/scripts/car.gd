@@ -55,7 +55,8 @@ func _physics_process(delta: float) -> void:
 	for wheel in driving_wheels:
 		#linearly reduce engine force based on the wheels current rpm and the player input
 		var actual_force : float = 0
-		if ai_control:		
+		#if ai_control:		
+		if ai_control:
 			actual_force = ai_acceleration * ((-max_torque/max_wheel_rpm) * abs(wheel.get_rpm()) + max_torque) 
 		else:
 			actual_force = player_acceleration * ((-max_torque/max_wheel_rpm) * abs(wheel.get_rpm()) + max_torque) 
@@ -66,7 +67,9 @@ func _physics_process(delta: float) -> void:
 func get_input(delta : float):
 	
 	if Input.is_key_pressed(KEY_T):
-		ai_control = !ai_control
+		ai_control = true
+	if Input.is_key_pressed(KEY_Y):
+		ai_control = false
 	#steer first
 	player_input.x = Input.get_axis("right","left")
 	player_steer = move_toward(player_steer, player_input.x * max_steer,steer_damping * delta)

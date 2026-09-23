@@ -13,4 +13,5 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D" unique_id=1729320226]
+cull_mask = 1
 current = true

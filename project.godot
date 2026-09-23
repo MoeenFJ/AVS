@@ -48,8 +48,9 @@ down={
 
 [layer_names]
 
-3d_render/layer_1="World"
-3d_render/layer_2="Line Segmentation"
+3d_render/layer_18="Line Mask"
+3d_render/layer_19="Road only"
+3d_render/layer_20="World"
 
 [rendering]
 
